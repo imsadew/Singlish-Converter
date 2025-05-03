@@ -1,0 +1,299 @@
+/*
+Primary variant - #BB86FC
+Primary - #6200EE
+Secondary - #03DAC6
+Error - #CF6679
+*/
+
+/* CSS Variables for Theming */
+:root {
+    /* Dark Mode Defaults */
+    --bg-color: #111111;
+    --text-color: #ffffff;
+    --card-bg: #212121;
+    --card-border: rgba(255, 255, 255, 0.1); /* Subtle white border in dark */
+    --border-color: #4a4a4a;
+    --primary-color: #6200EE; /* Purple */
+    --secondary-color: #03DAC6; /* Teal */
+    --error-color: #CF6679; /* Reddish */
+    --placeholder-color: #cccccc;
+}
+
+body.light-mode {
+    /* Light Mode Overrides */
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #f8f8f8;
+    --card-border: rgba(0, 0, 0, 0.1); /* Subtle black border in light */
+    --border-color: #dddddd;
+    --primary-color: #007bff; /* A common blue for light mode primary */
+    --secondary-color: #007bff; /* Using the same blue for secondary in light mode for simplicity */
+    --error-color: #dc3545; /* A common red for light mode errors */
+    --placeholder-color: #666666;
+}
+
+
+/* General Body and Layout */
+html {
+    width: 100%;
+}
+
+body {
+    font-family: 'Calibri', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 10px;
+    margin: 0; /* Reset default body margin */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.container {
+    width: 100%;
+    max-width: 600px; /* Slightly wider max-width */
+    margin: 0 auto; /* Center the container */
+    padding: 0 10px; /* Add horizontal padding */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    position: relative; /* Needed to position toggle button */
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+     background-color: var(--primary-color);
+     color: var(--text-color); /* Or var(--bg-color) for contrast */
+}
+
+
+/* Titles */
+.titles {
+    text-align: center;
+    margin-bottom: 20px; /* Add space below titles */
+}
+
+.small-title {
+    font-size: 12px;
+    color: var(--secondary-color);
+    text-transform: uppercase; /* Make small title uppercase */
+    letter-spacing: 1px; /* Add some letter spacing */
+}
+
+.main-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold; /* Make main title bold */
+    margin-top: 5px; /* Add space above main title */
+}
+
+.secondary-title {
+    font-size: 14px;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+
+/* Card/Area Styling */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px; /* More rounded corners */
+    padding: 20px; /* Increased padding */
+    margin-bottom: 20px; /* Space between cards */
+    box-shadow: 0 2px 5px var(--card-border); /* Subtle shadow using border color variable */
+    border: 1px solid var(--border-color); /* Add a subtle border */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Remove area-container specific styles that are now in .card */
+.area-container {
+    width: 100%;
+    max-width: 100%; /* Card handles max-width */
+    margin: 0 auto; /* Center the card */
+}
+
+
+/* Output Area */
+#output-area {
+    padding: 0; /* Padding is now handled by .card */
+    padding-bottom: 15px; /* Add some space above the button */
+}
+
+#output {
+    font-size: 25px;
+    margin-top: 10px;
+    min-height: 100px; /* Give output a minimum height */
+    word-wrap: break-word; /* Prevent overflow */
+    white-space: pre-wrap; /* Preserve line breaks */
+}
+
+/* Input Area */
+#input-area {
+    padding: 0; /* Padding is now handled by .card */
+}
+
+#clear-button {
+    background-color: var(--error-color);
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    float: right;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#clear-button:hover {
+    opacity: 0.9;
+}
+
+textarea {
+    outline: none;
+    width: 100%;
+    height: 250px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color); /* Use variable */
+    border-radius: 4px;
+    resize: vertical; /* Allow vertical resize only */
+    caret-color: var(--secondary-color); /* Use variable */
+    font-size: 17px;
+    color: var(--text-color); /* Use variable */
+    background-color: var(--card-bg); /* Use variable */
+    margin-top: 10px;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+textarea::placeholder {
+    color: var(--placeholder-color); /* Style placeholder text */
+    opacity: 0.8;
+}
+
+textarea:focus {
+    border-color: var(--secondary-color); /* Highlight on focus */
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+
+/* Buttons */
+#copy-button {
+    width: 100%;
+    height: 40px; /* Increased height */
+    background-color: var(--primary-color); /* Use variable */
+    border: 0px;
+    color: #fff; /* Keep text white on primary button */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#copy-button:hover {
+    opacity: 0.9;
+}
+
+.coppied {
+    background-color: var(--secondary-color) !important; /* Use variable for copied state */
+}
+
+
+/* Links */
+a {
+    color: var(--secondary-color); /* Use variable */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+/* Footer */
+.footer {
+    margin-top: 30px; /* Adjust margin */
+    margin-bottom: 15px; /* Add bottom margin */
+    /* Remove absolute positioning styles */
+    /* left: 0; */
+    /* bottom: 0; */
+    /* height: 44px; */
+    /* width: 100%; */
+    background: transparent; /* Make footer background transparent */
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-color); /* Use variable */
+    transition: color 0.3s ease;
+}
+
+
+/* Scheme/Cheat Sheet */
+.scheme {
+    /* Card class handles padding and background */
+    padding-top: 10px; /* Add space above first heading in scheme */
+}
+
+.scheme-title {
+    color: var(--primary-color); /* Use variable for main scheme title */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.scheme-subtitle {
+    color: var(--secondary-color); /* Use variable for subtitles */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-style: normal; /* Remove italic default */
+    font-size: 18px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Keep collapse */
+    margin-bottom: 20px; /* Space below tables */
+}
+
+td {
+    border: 1px solid var(--border-color); /* Use variable */
+    text-align: center;
+    padding: 10px 5px; /* Adjust padding */
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+/* Optional: Hover effect for table cells */
+/*
+td:hover {
+    background-color: rgba(var(--text-color), 0.05);
+}
+*/
+
+
+/* Specific overrides for light mode table borders */
+body.light-mode td {
+     border-color: var(--border-color); /* Ensure border is visible */
+}
+
+/* Glow effect (optional, keep as is) */
+.glow {
+    box-shadow: 0px 0px 2px 0px var(--secondary-color);
+}
