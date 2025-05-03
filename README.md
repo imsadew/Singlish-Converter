@@ -2,7 +2,7 @@
 
 A simple web tool, similar to SAP Singlish Converter, that converts Singlish characters to Sinhala Unicode in real-time as you type.
 
-**Live Demo:** [#](#)
+**Live Demo:** [Singlish Converter](https://imsadew.github.io/Singlish-Converter/)
 
 ## ✨ Features
 
@@ -16,7 +16,7 @@ A simple web tool, similar to SAP Singlish Converter, that converts Singlish cha
 
 ## 🚀 How to Use
 
-1.  Go to the [Live Demo](#).
+1.  Go to the [Live Demo](https://imsadew.github.io/Singlish-Converter/).
 2.  Start typing Singlish in the left input box.
 3.  The Sinhala Unicode text will appear instantly in the right output box.
 4.  Use the buttons below the output box (Copy, Export, Import, Share) for actions.
